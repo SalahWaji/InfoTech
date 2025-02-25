@@ -1,0 +1,200 @@
+/* Hover Animations */
+.service-card i {
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover i {
+    transform: scale(1.2);
+}
+
+/* Scroll Animations */
+[data-aos] {
+    opacity: 0;
+    transition-property: transform, opacity;
+}
+
+[data-aos].aos-animate {
+    opacity: 1;
+}
+
+/* Custom animations for geometric shapes */
+.geometric-shapes::before,
+.geometric-shapes::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+
+.geometric-shapes::before {
+    width: 300px;
+    height: 300px;
+    background: var(--secondary);
+    filter: blur(50px);
+    opacity: 0.3;
+    animation: pulse 6s ease-in-out infinite;
+}
+
+.geometric-shapes::after {
+    width: 250px;
+    height: 250px;
+    background: var(--accent);
+    filter: blur(50px);
+    opacity: 0.3;
+    animation: pulse 6s ease-in-out infinite reverse;
+}
+
+/* Portfolio hover effect */
+.portfolio-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.portfolio-item:hover::before {
+    opacity: 0.7;
+}
+
+/* Button hover animations */
+.primary-button,
+.cta-button {
+    position: relative;
+    overflow: hidden;
+}
+
+.primary-button::after,
+.cta-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%) scale(0);
+    border-radius: 50%;
+    transition: transform 0.6s ease;
+}
+
+.primary-button:hover::after,
+.cta-button:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Custom Keyframes */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* AOS Custom Animations */
+[data-aos="fade-up"] {
+    transform: translateY(30px);
+}
+
+[data-aos="fade-up"].aos-animate {
+    transform: translateY(0);
+}
+
+[data-aos="fade-left"] {
+    transform: translateX(30px);
+}
+
+[data-aos="fade-left"].aos-animate {
+    transform: translateX(0);
+}
+
+/* Form input animations */
+.form-group input,
+.form-group textarea {
+    transform-origin: left;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    transform: scale(1.01);
+}
+
+/* Service card content animations */
+.service-card p {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.service-card:hover p {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Client logo animations */
+@keyframes scrollLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-33.33% - 4rem));
+    }
+}
+
+.clients-grid {
+    animation: scrollLeft 15s linear infinite;
+    will-change: transform;
+}
+
+.client-logo img {
+    filter: grayscale(100%);
+    opacity: 0.8;
+    transition: all 0.4s ease;
+}
+
+.client-logo:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Modal animations */
+.modal {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal-content {
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+/* Text gradient animation */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.hero-content h1 {
+    animation: gradientFlow 8s ease infinite;
+    background-size: 200% 100%;
+}
