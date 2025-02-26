@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //    - message (sender's message)
     // 4. Get your EmailJS public key, service ID, and template ID
     // 5. Replace the placeholders below with your actual values
-    emailjs.init("YOUR_PUBLIC_KEY");
+    emailjs.init("vmv4mwKXDnAFiUv9J");
 
     AOS.init({
         duration: 800,
@@ -53,11 +53,17 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.textContent = 'Sending...';
             submitButton.disabled = true;
             
+            // Hide any existing messages
+            const successMessage = document.getElementById('form-success-message');
+            const errorMessage = document.getElementById('form-error-message');
+            successMessage.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+            
             try {
                 // Send email using EmailJS
                 await emailjs.send(
-                    "YOUR_SERVICE_ID", // Get this from your EmailJS dashboard
-                    "YOUR_TEMPLATE_ID", // Get this from your email template
+                    "service_mhag90h", // Get this from your EmailJS dashboard
+                    "template_yt8pac8", // Get this from your email template
                     {
                         to_email: "info@infotechgs.com",
                         from_name: form.name.value,
@@ -68,14 +74,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 );
                 
-                // Show success message
-                alert('Thank you for your message! We will get back to you soon.');
+                // Show success message in the form
+                successMessage.classList.remove('hidden');
+                
+                // Scroll to the success message
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 
                 // Reset form
                 form.reset();
             } catch (error) {
                 console.error('Error sending email:', error);
-                alert('Sorry, there was an error sending your message. Please try again later.');
+                // Show error message in the form
+                errorMessage.classList.remove('hidden');
+                
+                // Scroll to the error message
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } finally {
                 // Reset button state
                 submitButton.textContent = originalText;
